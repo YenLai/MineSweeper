@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Sweeper</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" 
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" 
+    crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body style="background-color: #434748;">
+    
+    
+    <h1 class="title" style="text-align: center;">踩地雷</h1>
+            
+    <header>
+        <div class="menu">
+            <button class="beginner" onclick="view.chooseMode(this)" style="width: 245px; background-color: black;">初級 : 9 × 9，10顆地雷</button>
+            <button class="intermediate" onclick="view.chooseMode(this)" style="width: 245px; background-color: black;">中級 : 16 × 16，40顆地雷</button>
+            <button class="advanced" onclick="view.chooseMode(this)" style="width: 245px; background-color: black;">高級 : 30 × 30，99顆地雷</button>
+
+            
+            <form class="customize" style="background-color: black; width: 211px;">
+                <div style="font-size: 18px; margin-bottom: 7px;">自訂模式 : </div>
+                <div class="form-group">
+                    <label >方形棋盤列數 </label>
+                    <br>
+                    <input class="form-control" id="inputRows" placeholder="請輸入方形棋盤列數">
+                    <br>
+                    <small id="rowsHint" style="color: coral;"></small>
+                </div>
+                <div class="form-group">
+                    <label>地雷數目</label>
+                    <br>
+                    <input class="form-control" id="inputMines" placeholder="請輸入地雷數目">
+                    <br>
+                    <small id="minesHint" style="color: coral;"></small>
+                    <br><br>
+                </div>
+                <a class="startBtn" type="button" onclick="view.inputHint();"
+                style="background-color:#DCDCDC; color: black;">開始遊戲</a>
+            </form>
+        </div>
+    </header>
+
+    <div class="gameBar">
+        <div class="info">
+            <!-- 剩餘棋子:  -->
+        </div>
+        <div class="timer">
+            <!-- time : 0 -->
+        </div>
+        <div class="reset">
+            <!-- <button class="reset">RESET</button> -->
+        </div>
+        
+    </div>
+
+    <div class="box ">
+        <div id="play-board" class="container"></div>
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>

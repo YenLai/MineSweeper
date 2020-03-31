@@ -1,0 +1,140 @@
+/* 選取模式畫面 */
+
+.menu , .gameBar{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: repeat(4,auto);
+    grid-row-gap: 15px;
+    grid-template-areas:
+    ". header1 btn"
+    ". header2 ."
+    ". header3 ."
+    ". header4 ."
+    ". header5 ."
+    ;
+    justify-items:center;
+    margin-bottom: 10px;
+}
+.title{ 
+    margin-top: 20px;
+    color: rgb(214, 212, 212);
+    grid-area: header1; 
+}
+
+.beginner { grid-area: header2; }
+    
+.intermediate{grid-area: header3;}
+
+.advanced{grid-area: header4;}
+    
+.customize {
+    grid-area: header5;
+    border-radius: 20px;
+    border: rgba(249, 249, 249, 0.795) 1px solid;
+    padding: 15px;
+}
+ 
+    
+button {
+    border: rgba(249, 249, 249, 0.795) 1px solid;
+    color: #DCDCDC;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 20px;
+}
+input {
+    margin-top: 7px;
+    border-radius: 5px;
+    height: 25px;
+    color: black;
+    font-size: 15px;
+}
+.startBtn{
+    font-size: 15px;
+    
+    padding:5px;
+}
+small {
+    margin-bottom: 20px;
+}
+
+
+
+
+/* 遊戲畫面 */
+
+.container {
+    /* width: 2em; */
+    text-align: center;
+    display: inline-grid;
+}
+.box{
+    text-align: center;
+}
+
+.block {
+    background-color: #BDBDBD;
+    width: 30px;
+    height: 30px;
+    border: 2px outset;
+}
+
+.ocean{
+    background-color: #BDBDBD;
+    border: 2px inset;
+}
+.number {
+    background-color: #BDBDBD;
+    border: 2px inset;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: monospace;
+}
+.n1{color: blue;}
+.n2{color: green;}
+.n3{color: red;}
+.n4{color: #00007B;}
+.n5{color: #AC524C;}
+.n6{color: #43A09C;}
+.n7{color: #AA4FA3;}
+.n8{color: #262623;}
+
+.fa-bomb{
+    color: black;
+    font-size: 20px;
+}
+.fa-flag{
+    color: rgb(155, 37, 37);
+    font-size: 20px;
+}
+.bomb{
+    background-color: rgb(202, 0, 0);
+    border: 2px inset rgb(202, 0, 0);
+}
+
+.timer ,.info{
+    text-align: center;
+    font-size: 20px; 
+}
+.timer{
+    grid-area: header2; 
+}
+.info{ 
+    grid-area: header1; 
+}
+.reset{
+    border-color: black ;
+    grid-area: btn;
+    width: 80px;
+    color: black;
+}
+
+*{
+    font-family: 微軟正黑體;
+    color: #DCDCDC;
+
+}
+
+/* * {
+    border: 1px black solid;
+} */

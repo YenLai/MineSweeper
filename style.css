@@ -6,7 +6,7 @@
     grid-template-rows: repeat(4,auto);
     grid-row-gap: 15px;
     grid-template-areas:
-    ". header1 btn"
+    "btn1 header1 btn2"
     ". header2 ."
     ". header3 ."
     ". header4 ."
@@ -122,12 +122,25 @@ small {
 .info{ 
     grid-area: header1; 
 }
-.reset{
+.restart , .selectMode{
     border-color: black ;
-    grid-area: btn;
-    width: 80px;
+    width: 110px;
     color: black;
+    font-weight: 900;
 }
+
+.playingBtn {
+    display: grid;
+    grid-template-columns: 110px auto 110px;
+    grid-template-areas: "btn1 header btn2";
+}
+h3{
+    grid-area: header;
+    margin-bottom: 0;
+}
+.selectMode{grid-area: btn1;}
+.restart{grid-area: btn2;}
+
 
 *{
     font-family: 微軟正黑體;

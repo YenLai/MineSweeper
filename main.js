@@ -27,15 +27,18 @@ const view = {
       }
     },
     renderInfo(flag){
-      const reset = document.querySelector('.reset')
-      reset.innerHTML = `<button class="reset">Restart</button>`
+      const playingBtn = document.querySelector('.playingBtn')
+      playingBtn.innerHTML = `
+      <button class="selectMode" onclick="view.playingModeBtn(this)">Select Mode</button>
+      踩地雷
+      <button class="restart" onclick="view.playingModeBtn(this)">Restart</button>
+      `
       const Info = document.querySelector('.info')
       Info.innerHTML = `
           剩餘棋子: ${flag}
       `
     }
     ,
-
     renderTime(time) {
       const timer = document.querySelector('.timer')
       timer.textContent = `時間 :  ${time} 秒`
@@ -51,7 +54,6 @@ const view = {
     inputHint(){
       const header = document.querySelector('header')
       const inputRows = Number(document.querySelector('#inputRows').value)
-      // console.log(typeof(inputRows))
       if(inputRows<=3){
         const rowsHint = document.querySelector('#rowsHint')
         rowsHint.textContent = 
@@ -64,18 +66,15 @@ const view = {
         if(inputMines < 2 || inputMines >= Math.pow(inputRows-1,2)){
           const minesHint = document.querySelector('#minesHint')
           minesHint.textContent = 
-          ` 地雷數目需介於 2 ～　${Math.pow(inputRows-1,2)-1} 之間`
+          ` 地雷數目需介於 2 ～${Math.pow(inputRows-1,2)-1} 之間`
         }
         else{
           header.innerHTML = ''
           controller.createGame(inputRows,inputMines)
         }
-
       }
     },
-    
     chooseMode(event){
-      console.log(event.classList.contains('beginner'))
       const header = document.querySelector('header')
       if(event.classList.contains('beginner')){
         controller.createGame(9,10)
@@ -87,6 +86,14 @@ const view = {
         controller.createGame(30,99)
       }
       header.innerHTML = ''
+    }
+    ,
+    playingModeBtn(event){
+      if(event.classList.contains('restart')) 
+        controller.reset(model.rows,model.mines.length)
+      else{
+        window.location.reload()
+      }
     }
   }
   
@@ -117,7 +124,7 @@ const view = {
             firstClick = false
           }
           
-          if(controller.dig(model.fields[event.target.id])) //
+          if(controller.dig(model.fields[event.target.id])) //踩中的那格class加上bomb(底顯示為紅色) 
             event.target.classList.add('bomb')
 
         })
@@ -126,13 +133,11 @@ const view = {
           event.preventDefault()
 
           if(event.target.tagName === 'I'){
-            
             event.target.parentElement.classList.remove('flag')
             model.flags --
             event.target.parentElement.innerHTML = ''
           }
-          else if(!event.target.classList.contains('flag'))
-          {
+          else if(!event.target.classList.contains('flag')){
             event.target.innerHTML = `<i class="fas fa-flag"></i>`
             event.target.classList.add('flag')
             model.flags ++
@@ -145,11 +150,6 @@ const view = {
           
           view.renderInfo(model.mines.length-model.flags)
         })
-      })
-
-      const reset = document.querySelector('.reset')
-      reset.addEventListener('click',()=>{
-        this.reset(numberOfRows,numberOfMines)
       })
     },
 
@@ -181,7 +181,6 @@ const view = {
     },
     
     getFieldData(fieldIdx) {
-
       let count = 0
       model.aroundArray(fieldIdx).map(index => {
         if (model.fields[index].state === 'mine') count ++
@@ -202,7 +201,7 @@ const view = {
           model.fields.forEach(field => {
             if(field.state!== 'mine') field.isDigged = 1
           })
-          alert('Game Over')
+          // alert('Game Over')
           return true
         }
         else{

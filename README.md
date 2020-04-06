@@ -1,5 +1,6 @@
 # MineSweeper
 Mini-game : Try to avoid mines based on the hint-number which is how many mines around the block.
+https://yenlai.github.io/MineSweeper/
 
 ## Features
 - Four Mode : Beginner Mode, Intermediate Mode, Advanced Mode , Customize Mode
